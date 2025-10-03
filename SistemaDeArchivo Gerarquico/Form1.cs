@@ -153,32 +153,41 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var r = sistemaArchivos.RecorridoPreOrden();
+            txtResultado.Text = string.Join(Environment.NewLine, r);
+            //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var r = sistemaArchivos.RecorridoPostOrden();
+            txtResultado.Text= string.Join(Environment.NewLine, r);
+            //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBFS_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var r = sistemaArchivos.RecorridoBFS();
+            txtResultado.Text = string.Join(Environment.NewLine, r);
+
+            //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnListarArchivos_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var r= sistemaArchivos.ListarTodosLosArchivos();
+            txtResultado.Text = string.Join(Environment.NewLine, r);
+            //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtResultado.Clear();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Evento vacío - no es necesario aquí
+            
         }
+
     }
 }

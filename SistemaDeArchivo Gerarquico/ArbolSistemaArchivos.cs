@@ -151,22 +151,61 @@ namespace SistemaDeArchivo_Gerarquico
 
         public List<string> RecorridoPreOrden()
         {
-            return new List<string>();
+            var r = new List<string>();
+            void Pre(NodeArchivo n, string ruta)
+            {
+                if (n == null) return;
+                r.Add(ruta);
+                foreach (var h in n.Hijos)
+                    Pre(h, ruta + "/" + h.Nombre);
+            }
+            Pre(Raiz, "/root");
+            return r;
         }
 
         public List<string> RecorridoPostOrden()
         {
-            return new List<string>();
+            var r =new List<string>();
+            string Post(NodeArchivo n, string ruta)
+            {
+                if (n==null) return string.Empty;
+                foreach (var h in n.Hijos)
+                    Post(h, ruta + "/" + h.Nombre);
+                r.Add(ruta);
+                return ruta;
+            }
+            Post(Raiz, "/root");
+
+            return r;
         }
 
         public List<string> RecorridoBFS()
         {
-            return new List<string>();
+            var r = new List<string>();
+            var q = new Queue<(NodeArchivo nodo, string ruta)>();
+            q.Enqueue((Raiz, "/root"));
+            while (q.Count > 0)
+            {
+                var (n, ruta) = q.Dequeue();
+                r.Add(ruta);
+                foreach (var h in n.Hijos)
+                    q.Enqueue((h, ruta + "/" + h.Nombre));
+            }
+            return r;
+            //return new List<string>();
         }
 
         public List<string> ListarTodosLosArchivos()
         {
-            return new List<string>();
+            var r = new List<string>();
+            void DFS(NodeArchivo n, string ruta)
+            {
+                if (n.Tipo == TipoNodo.Archivo) r.Add(ruta);
+                foreach (var h in n.Hijos)
+                    DFS(h, ruta + "/" + h.Nombre);
+            }
+            DFS(Raiz, "/root");
+            return r;
         }
 
         public int ObtenerProfundidadMaxima()
