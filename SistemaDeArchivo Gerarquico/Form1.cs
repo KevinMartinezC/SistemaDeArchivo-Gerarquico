@@ -16,6 +16,8 @@ namespace SistemaDeArchivo_Gerarquico
             ActualizarVisualizacion();
         }
 
+        String nombre;
+
         private void CargarEstructuraEjemplo()
         {
             sistemaArchivos.AgregarNodo("/root", "documentos", TipoNodo.Carpeta);
@@ -143,12 +145,14 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 2 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            nombre = txtBuscar.Text;
+            sistemaArchivos.BuscarPorNombre(nombre);
         }
 
         private void btnRutaAbsoluta_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 2 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnPreOrden_Click(object sender, EventArgs e)
