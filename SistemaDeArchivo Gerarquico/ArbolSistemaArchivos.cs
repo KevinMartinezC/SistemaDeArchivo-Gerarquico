@@ -151,61 +151,61 @@ namespace SistemaDeArchivo_Gerarquico
 
         public List<string> RecorridoPreOrden()
         {
-            var r = new List<string>();
-            void Pre(NodeArchivo n, string ruta)
+            var listaRutas = new List<string>();
+            void recorrerPreOrden(NodeArchivo nodoActual, string rutaActual)
             {
-                if (n == null) return;
-                r.Add(ruta);
-                foreach (var h in n.Hijos)
-                    Pre(h, ruta + "/" + h.Nombre);
+                if (nodoActual == null) return;
+                listaRutas.Add(rutaActual);
+                foreach (var hijo in nodoActual.Hijos)
+                    recorrerPreOrden(hijo, rutaActual + "/" + hijo.Nombre);
             }
-            Pre(Raiz, "/root");
-            return r;
+            recorrerPreOrden(Raiz, "/root");
+            return listaRutas;
         }
 
         public List<string> RecorridoPostOrden()
         {
-            var r =new List<string>();
-            string Post(NodeArchivo n, string ruta)
+            var listaRutas =new List<string>();
+            string RecorrerPostOrden(NodeArchivo nodoActual, string rutaActual)
             {
-                if (n==null) return string.Empty;
-                foreach (var h in n.Hijos)
-                    Post(h, ruta + "/" + h.Nombre);
-                r.Add(ruta);
-                return ruta;
+                if (nodoActual==null) return string.Empty;
+                foreach (var hijo in nodoActual.Hijos)
+                    RecorrerPostOrden(hijo, rutaActual + "/" + hijo.Nombre);
+                listaRutas.Add(rutaActual);
+                return rutaActual;
             }
-            Post(Raiz, "/root");
+            RecorrerPostOrden(Raiz, "/root");
 
-            return r;
+            return listaRutas;
         }
 
         public List<string> RecorridoBFS()
         {
-            var r = new List<string>();
+            var listaRutas = new List<string>();
             var q = new Queue<(NodeArchivo nodo, string ruta)>();
             q.Enqueue((Raiz, "/root"));
             while (q.Count > 0)
             {
-                var (n, ruta) = q.Dequeue();
-                r.Add(ruta);
-                foreach (var h in n.Hijos)
-                    q.Enqueue((h, ruta + "/" + h.Nombre));
+                var (nodoActual, ruta) = q.Dequeue();
+                listaRutas.Add(ruta);
+                foreach (var hijo in nodoActual.Hijos)
+                    q.Enqueue((hijo, ruta + "/" + hijo.Nombre));
             }
-            return r;
+            return listaRutas;
             //return new List<string>();
         }
 
         public List<string> ListarTodosLosArchivos()
         {
-            var r = new List<string>();
-            void DFS(NodeArchivo n, string ruta)
+            var listaRutas = new List<string>();
+            void DFS(NodeArchivo nodoActual, string rutaActual)
             {
-                if (n.Tipo == TipoNodo.Archivo) r.Add(ruta);
-                foreach (var h in n.Hijos)
-                    DFS(h, ruta + "/" + h.Nombre);
+                if (nodoActual.Tipo == TipoNodo.Archivo) listaRutas.Add(rutaActual);
+                foreach (var hijo in nodoActual.Hijos)
+                    DFS(hijo, rutaActual + "/" + hijo.Nombre);
             }
             DFS(Raiz, "/root");
-            return r;
+            return listaRutas;
         }
 
         public int ObtenerProfundidadMaxima()

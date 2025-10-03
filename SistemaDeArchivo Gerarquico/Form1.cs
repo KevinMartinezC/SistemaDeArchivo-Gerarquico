@@ -153,30 +153,30 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-            var r = sistemaArchivos.RecorridoPreOrden();
-            txtResultado.Text = string.Join(Environment.NewLine, r);
+            var resultado = sistemaArchivos.RecorridoPreOrden();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
             //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            var r = sistemaArchivos.RecorridoPostOrden();
-            txtResultado.Text= string.Join(Environment.NewLine, r);
+            var resultado = sistemaArchivos.RecorridoPostOrden();
+            txtResultado.Text= string.Join(Environment.NewLine, resultado);
             //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBFS_Click(object sender, EventArgs e)
         {
-            var r = sistemaArchivos.RecorridoBFS();
-            txtResultado.Text = string.Join(Environment.NewLine, r);
+            var resultado = sistemaArchivos.RecorridoBFS();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
 
             //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnListarArchivos_Click(object sender, EventArgs e)
         {
-            var r= sistemaArchivos.ListarTodosLosArchivos();
-            txtResultado.Text = string.Join(Environment.NewLine, r);
+            var resultado= sistemaArchivos.ListarTodosLosArchivos();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
             //MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
