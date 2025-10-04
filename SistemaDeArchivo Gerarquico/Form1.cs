@@ -17,6 +17,7 @@ namespace SistemaDeArchivo_Gerarquico
         }
 
         String nombre;
+        String rutaAbsoluta;
 
         private void CargarEstructuraEjemplo()
         {
@@ -107,7 +108,7 @@ namespace SistemaDeArchivo_Gerarquico
                 return;
             }
 
-            var confirmacion = MessageBox.Show($"¿Eliminar '{ruta}'?\nSe eliminará todo su contenido.", 
+            var confirmacion = MessageBox.Show($"¿Eliminar '{ruta}'?\nSe eliminará todo su contenido.",
                 "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
@@ -151,8 +152,8 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnRutaAbsoluta_Click(object sender, EventArgs e)
         {
-
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            rutaAbsoluta = txtRutaAbsoluta.Text;
+            sistemaArchivos.VerInfo(rutaAbsoluta);
         }
 
         private void btnPreOrden_Click(object sender, EventArgs e)
@@ -183,6 +184,11 @@ namespace SistemaDeArchivo_Gerarquico
         private void Form1_Load(object sender, EventArgs e)
         {
             // Evento vacío - no es necesario aquí
+        }
+
+        private void txtRutaAbsoluta_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

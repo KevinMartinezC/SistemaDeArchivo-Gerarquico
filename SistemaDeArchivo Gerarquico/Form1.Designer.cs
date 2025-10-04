@@ -16,369 +16,419 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void InitializeComponent()
         {
-            this.txtEstructura = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAgregarArchivo = new System.Windows.Forms.Button();
-            this.btnAgregarCarpeta = new System.Windows.Forms.Button();
-            this.txtNombre = new System.Windows.Forms.TextBox();
-            this.txtRutaPadre = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.txtRutaEliminar = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnListarArchivos = new System.Windows.Forms.Button();
-            this.btnBFS = new System.Windows.Forms.Button();
-            this.btnPostOrden = new System.Windows.Forms.Button();
-            this.btnPreOrden = new System.Windows.Forms.Button();
-            this.txtResultado = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblEstadisticas = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnRutaAbsoluta = new System.Windows.Forms.Button();
-            this.txtRutaAbsoluta = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btnLimpiar = new System.Windows.Forms.Button();
-            this.btnReiniciar = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.SuspendLayout();
+            txtEstructura = new TextBox();
+            groupBox1 = new GroupBox();
+            btnAgregarArchivo = new Button();
+            btnAgregarCarpeta = new Button();
+            txtNombre = new TextBox();
+            txtRutaPadre = new TextBox();
+            label2 = new Label();
+            label1 = new Label();
+            groupBox2 = new GroupBox();
+            btnBuscar = new Button();
+            txtBuscar = new TextBox();
+            label3 = new Label();
+            groupBox3 = new GroupBox();
+            btnEliminar = new Button();
+            txtRutaEliminar = new TextBox();
+            label4 = new Label();
+            groupBox4 = new GroupBox();
+            btnListarArchivos = new Button();
+            btnBFS = new Button();
+            btnPostOrden = new Button();
+            btnPreOrden = new Button();
+            txtResultado = new TextBox();
+            label5 = new Label();
+            lblEstadisticas = new Label();
+            groupBox5 = new GroupBox();
+            btnRutaAbsoluta = new Button();
+            txtRutaAbsoluta = new TextBox();
+            label6 = new Label();
+            btnLimpiar = new Button();
+            btnReiniciar = new Button();
+            pictureBox = new PictureBox();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            SuspendLayout();
             // 
             // txtEstructura
             // 
-            this.txtEstructura.Font = new System.Drawing.Font("Consolas", 10F);
-            this.txtEstructura.Location = new System.Drawing.Point(12, 40);
-            this.txtEstructura.Multiline = true;
-            this.txtEstructura.Name = "txtEstructura";
-            this.txtEstructura.ReadOnly = true;
-            this.txtEstructura.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtEstructura.Size = new System.Drawing.Size(400, 500);
-            this.txtEstructura.TabIndex = 0;
+            txtEstructura.Font = new Font("Consolas", 10F);
+            txtEstructura.Location = new Point(22, 85);
+            txtEstructura.Margin = new Padding(6);
+            txtEstructura.Multiline = true;
+            txtEstructura.Name = "txtEstructura";
+            txtEstructura.ReadOnly = true;
+            txtEstructura.ScrollBars = ScrollBars.Vertical;
+            txtEstructura.Size = new Size(739, 1062);
+            txtEstructura.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnAgregarArchivo);
-            this.groupBox1.Controls.Add(this.btnAgregarCarpeta);
-            this.groupBox1.Controls.Add(this.txtNombre);
-            this.groupBox1.Controls.Add(this.txtRutaPadre);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(430, 40);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(300, 160);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Agregar Elementos";
+            groupBox1.Controls.Add(btnAgregarArchivo);
+            groupBox1.Controls.Add(btnAgregarCarpeta);
+            groupBox1.Controls.Add(txtNombre);
+            groupBox1.Controls.Add(txtRutaPadre);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new Point(799, 85);
+            groupBox1.Margin = new Padding(6);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(6);
+            groupBox1.Size = new Size(557, 341);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Agregar Elementos";
             // 
             // btnAgregarArchivo
             // 
-            this.btnAgregarArchivo.Location = new System.Drawing.Point(160, 120);
-            this.btnAgregarArchivo.Name = "btnAgregarArchivo";
-            this.btnAgregarArchivo.Size = new System.Drawing.Size(120, 30);
-            this.btnAgregarArchivo.TabIndex = 5;
-            this.btnAgregarArchivo.Text = "Agregar Archivo";
-            this.btnAgregarArchivo.UseVisualStyleBackColor = true;
-            this.btnAgregarArchivo.Click += new System.EventHandler(this.btnAgregarArchivo_Click);
+            btnAgregarArchivo.Location = new Point(297, 256);
+            btnAgregarArchivo.Margin = new Padding(6);
+            btnAgregarArchivo.Name = "btnAgregarArchivo";
+            btnAgregarArchivo.Size = new Size(223, 64);
+            btnAgregarArchivo.TabIndex = 5;
+            btnAgregarArchivo.Text = "Agregar Archivo";
+            btnAgregarArchivo.UseVisualStyleBackColor = true;
+            btnAgregarArchivo.Click += btnAgregarArchivo_Click;
             // 
             // btnAgregarCarpeta
             // 
-            this.btnAgregarCarpeta.Location = new System.Drawing.Point(20, 120);
-            this.btnAgregarCarpeta.Name = "btnAgregarCarpeta";
-            this.btnAgregarCarpeta.Size = new System.Drawing.Size(120, 30);
-            this.btnAgregarCarpeta.TabIndex = 4;
-            this.btnAgregarCarpeta.Text = "Agregar Carpeta";
-            this.btnAgregarCarpeta.UseVisualStyleBackColor = true;
-            this.btnAgregarCarpeta.Click += new System.EventHandler(this.btnAgregarCarpeta_Click);
+            btnAgregarCarpeta.Location = new Point(37, 256);
+            btnAgregarCarpeta.Margin = new Padding(6);
+            btnAgregarCarpeta.Name = "btnAgregarCarpeta";
+            btnAgregarCarpeta.Size = new Size(223, 64);
+            btnAgregarCarpeta.TabIndex = 4;
+            btnAgregarCarpeta.Text = "Agregar Carpeta";
+            btnAgregarCarpeta.UseVisualStyleBackColor = true;
+            btnAgregarCarpeta.Click += btnAgregarCarpeta_Click;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(100, 80);
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(180, 23);
-            this.txtNombre.TabIndex = 3;
+            txtNombre.Location = new Point(186, 171);
+            txtNombre.Margin = new Padding(6);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(331, 39);
+            txtNombre.TabIndex = 3;
             // 
             // txtRutaPadre
             // 
-            this.txtRutaPadre.Location = new System.Drawing.Point(100, 40);
-            this.txtRutaPadre.Name = "txtRutaPadre";
-            this.txtRutaPadre.Size = new System.Drawing.Size(180, 23);
-            this.txtRutaPadre.TabIndex = 2;
-            this.txtRutaPadre.Text = "/root";
+            txtRutaPadre.Location = new Point(186, 85);
+            txtRutaPadre.Margin = new Padding(6);
+            txtRutaPadre.Name = "txtRutaPadre";
+            txtRutaPadre.Size = new Size(331, 39);
+            txtRutaPadre.TabIndex = 2;
+            txtRutaPadre.Text = "/root";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 83);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre:";
+            label2.AutoSize = true;
+            label2.Location = new Point(37, 177);
+            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(107, 32);
+            label2.TabIndex = 1;
+            label2.Text = "Nombre:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ruta Padre:";
+            label1.AutoSize = true;
+            label1.Location = new Point(37, 92);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(133, 32);
+            label1.TabIndex = 0;
+            label1.Text = "Ruta Padre:";
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnBuscar);
-            this.groupBox2.Controls.Add(this.txtBuscar);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(430, 210);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(300, 90);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Buscar";
+            groupBox2.Controls.Add(btnBuscar);
+            groupBox2.Controls.Add(txtBuscar);
+            groupBox2.Controls.Add(label3);
+            groupBox2.Location = new Point(799, 448);
+            groupBox2.Margin = new Padding(6);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(6);
+            groupBox2.Size = new Size(557, 192);
+            groupBox2.TabIndex = 2;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Buscar";
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(200, 50);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(80, 25);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            btnBuscar.Location = new Point(371, 107);
+            btnBuscar.Margin = new Padding(6);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(149, 53);
+            btnBuscar.TabIndex = 2;
+            btnBuscar.Text = "Buscar";
+            btnBuscar.UseVisualStyleBackColor = true;
+            btnBuscar.Click += btnBuscar_Click;
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(80, 30);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(200, 23);
-            this.txtBuscar.TabIndex = 1;
+            txtBuscar.Location = new Point(149, 64);
+            txtBuscar.Margin = new Padding(6);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(368, 39);
+            txtBuscar.TabIndex = 1;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 15);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Término:";
+            label3.AutoSize = true;
+            label3.Location = new Point(37, 70);
+            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(106, 32);
+            label3.TabIndex = 0;
+            label3.Text = "Término:";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnEliminar);
-            this.groupBox3.Controls.Add(this.txtRutaEliminar);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(430, 310);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(300, 90);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Eliminar";
+            groupBox3.Controls.Add(btnEliminar);
+            groupBox3.Controls.Add(txtRutaEliminar);
+            groupBox3.Controls.Add(label4);
+            groupBox3.Location = new Point(799, 661);
+            groupBox3.Margin = new Padding(6);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(6);
+            groupBox3.Size = new Size(557, 192);
+            groupBox3.TabIndex = 3;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Eliminar";
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(200, 50);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(80, 25);
-            this.btnEliminar.TabIndex = 2;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            btnEliminar.Location = new Point(371, 107);
+            btnEliminar.Margin = new Padding(6);
+            btnEliminar.Name = "btnEliminar";
+            btnEliminar.Size = new Size(149, 53);
+            btnEliminar.TabIndex = 2;
+            btnEliminar.Text = "Eliminar";
+            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // txtRutaEliminar
             // 
-            this.txtRutaEliminar.Location = new System.Drawing.Point(60, 30);
-            this.txtRutaEliminar.Name = "txtRutaEliminar";
-            this.txtRutaEliminar.Size = new System.Drawing.Size(220, 23);
-            this.txtRutaEliminar.TabIndex = 1;
+            txtRutaEliminar.Location = new Point(111, 64);
+            txtRutaEliminar.Margin = new Padding(6);
+            txtRutaEliminar.Name = "txtRutaEliminar";
+            txtRutaEliminar.Size = new Size(405, 39);
+            txtRutaEliminar.TabIndex = 1;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Ruta:";
+            label4.AutoSize = true;
+            label4.Location = new Point(37, 70);
+            label4.Margin = new Padding(6, 0, 6, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(67, 32);
+            label4.TabIndex = 0;
+            label4.Text = "Ruta:";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.btnListarArchivos);
-            this.groupBox4.Controls.Add(this.btnBFS);
-            this.groupBox4.Controls.Add(this.btnPostOrden);
-            this.groupBox4.Controls.Add(this.btnPreOrden);
-            this.groupBox4.Location = new System.Drawing.Point(750, 40);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(220, 180);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Recorridos";
+            groupBox4.Controls.Add(btnListarArchivos);
+            groupBox4.Controls.Add(btnBFS);
+            groupBox4.Controls.Add(btnPostOrden);
+            groupBox4.Controls.Add(btnPreOrden);
+            groupBox4.Location = new Point(1393, 85);
+            groupBox4.Margin = new Padding(6);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Padding = new Padding(6);
+            groupBox4.Size = new Size(409, 384);
+            groupBox4.TabIndex = 4;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Recorridos";
             // 
             // btnListarArchivos
             // 
-            this.btnListarArchivos.Location = new System.Drawing.Point(20, 135);
-            this.btnListarArchivos.Name = "btnListarArchivos";
-            this.btnListarArchivos.Size = new System.Drawing.Size(180, 30);
-            this.btnListarArchivos.TabIndex = 3;
-            this.btnListarArchivos.Text = "Listar Archivos";
-            this.btnListarArchivos.UseVisualStyleBackColor = true;
-            this.btnListarArchivos.Click += new System.EventHandler(this.btnListarArchivos_Click);
+            btnListarArchivos.Location = new Point(37, 288);
+            btnListarArchivos.Margin = new Padding(6);
+            btnListarArchivos.Name = "btnListarArchivos";
+            btnListarArchivos.Size = new Size(334, 64);
+            btnListarArchivos.TabIndex = 3;
+            btnListarArchivos.Text = "Listar Archivos";
+            btnListarArchivos.UseVisualStyleBackColor = true;
+            btnListarArchivos.Click += btnListarArchivos_Click;
             // 
             // btnBFS
             // 
-            this.btnBFS.Location = new System.Drawing.Point(20, 100);
-            this.btnBFS.Name = "btnBFS";
-            this.btnBFS.Size = new System.Drawing.Size(180, 30);
-            this.btnBFS.TabIndex = 2;
-            this.btnBFS.Text = "BFS";
-            this.btnBFS.UseVisualStyleBackColor = true;
-            this.btnBFS.Click += new System.EventHandler(this.btnBFS_Click);
+            btnBFS.Location = new Point(37, 213);
+            btnBFS.Margin = new Padding(6);
+            btnBFS.Name = "btnBFS";
+            btnBFS.Size = new Size(334, 64);
+            btnBFS.TabIndex = 2;
+            btnBFS.Text = "BFS";
+            btnBFS.UseVisualStyleBackColor = true;
+            btnBFS.Click += btnBFS_Click;
             // 
             // btnPostOrden
             // 
-            this.btnPostOrden.Location = new System.Drawing.Point(20, 65);
-            this.btnPostOrden.Name = "btnPostOrden";
-            this.btnPostOrden.Size = new System.Drawing.Size(180, 30);
-            this.btnPostOrden.TabIndex = 1;
-            this.btnPostOrden.Text = "Post-Orden";
-            this.btnPostOrden.UseVisualStyleBackColor = true;
-            this.btnPostOrden.Click += new System.EventHandler(this.btnPostOrden_Click);
+            btnPostOrden.Location = new Point(37, 139);
+            btnPostOrden.Margin = new Padding(6);
+            btnPostOrden.Name = "btnPostOrden";
+            btnPostOrden.Size = new Size(334, 64);
+            btnPostOrden.TabIndex = 1;
+            btnPostOrden.Text = "Post-Orden";
+            btnPostOrden.UseVisualStyleBackColor = true;
+            btnPostOrden.Click += btnPostOrden_Click;
             // 
             // btnPreOrden
             // 
-            this.btnPreOrden.Location = new System.Drawing.Point(20, 30);
-            this.btnPreOrden.Name = "btnPreOrden";
-            this.btnPreOrden.Size = new System.Drawing.Size(180, 30);
-            this.btnPreOrden.TabIndex = 0;
-            this.btnPreOrden.Text = "Pre-Orden";
-            this.btnPreOrden.UseVisualStyleBackColor = true;
-            this.btnPreOrden.Click += new System.EventHandler(this.btnPreOrden_Click);
+            btnPreOrden.Location = new Point(37, 64);
+            btnPreOrden.Margin = new Padding(6);
+            btnPreOrden.Name = "btnPreOrden";
+            btnPreOrden.Size = new Size(334, 64);
+            btnPreOrden.TabIndex = 0;
+            btnPreOrden.Text = "Pre-Orden";
+            btnPreOrden.UseVisualStyleBackColor = true;
+            btnPreOrden.Click += btnPreOrden_Click;
             // 
             // txtResultado
             // 
-            this.txtResultado.Font = new System.Drawing.Font("Consolas", 9F);
-            this.txtResultado.Location = new System.Drawing.Point(750, 250);
-            this.txtResultado.Multiline = true;
-            this.txtResultado.Name = "txtResultado";
-            this.txtResultado.ReadOnly = true;
-            this.txtResultado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResultado.Size = new System.Drawing.Size(220, 240);
-            this.txtResultado.TabIndex = 5;
+            txtResultado.Font = new Font("Consolas", 9F);
+            txtResultado.Location = new Point(1393, 533);
+            txtResultado.Margin = new Padding(6);
+            txtResultado.Multiline = true;
+            txtResultado.Name = "txtResultado";
+            txtResultado.ReadOnly = true;
+            txtResultado.ScrollBars = ScrollBars.Vertical;
+            txtResultado.Size = new Size(405, 507);
+            txtResultado.TabIndex = 5;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(12, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(127, 15);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Estructura del Sistema";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label5.Location = new Point(22, 32);
+            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(268, 32);
+            label5.TabIndex = 6;
+            label5.Text = "Estructura del Sistema";
             // 
             // lblEstadisticas
             // 
-            this.lblEstadisticas.AutoSize = true;
-            this.lblEstadisticas.Location = new System.Drawing.Point(12, 550);
-            this.lblEstadisticas.Name = "lblEstadisticas";
-            this.lblEstadisticas.Size = new System.Drawing.Size(73, 15);
-            this.lblEstadisticas.TabIndex = 7;
-            this.lblEstadisticas.Text = "Estadisticas...";
+            lblEstadisticas.AutoSize = true;
+            lblEstadisticas.Location = new Point(22, 1173);
+            lblEstadisticas.Margin = new Padding(6, 0, 6, 0);
+            lblEstadisticas.Name = "lblEstadisticas";
+            lblEstadisticas.Size = new Size(148, 32);
+            lblEstadisticas.TabIndex = 7;
+            lblEstadisticas.Text = "Estadisticas...";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btnRutaAbsoluta);
-            this.groupBox5.Controls.Add(this.txtRutaAbsoluta);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Location = new System.Drawing.Point(430, 410);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(300, 90);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Información";
+            groupBox5.Controls.Add(btnRutaAbsoluta);
+            groupBox5.Controls.Add(txtRutaAbsoluta);
+            groupBox5.Controls.Add(label6);
+            groupBox5.Location = new Point(799, 875);
+            groupBox5.Margin = new Padding(6);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Padding = new Padding(6);
+            groupBox5.Size = new Size(557, 192);
+            groupBox5.TabIndex = 8;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Información";
             // 
             // btnRutaAbsoluta
             // 
-            this.btnRutaAbsoluta.Location = new System.Drawing.Point(180, 50);
-            this.btnRutaAbsoluta.Name = "btnRutaAbsoluta";
-            this.btnRutaAbsoluta.Size = new System.Drawing.Size(100, 25);
-            this.btnRutaAbsoluta.TabIndex = 2;
-            this.btnRutaAbsoluta.Text = "Ver Info";
-            this.btnRutaAbsoluta.UseVisualStyleBackColor = true;
-            this.btnRutaAbsoluta.Click += new System.EventHandler(this.btnRutaAbsoluta_Click);
+            btnRutaAbsoluta.Location = new Point(334, 107);
+            btnRutaAbsoluta.Margin = new Padding(6);
+            btnRutaAbsoluta.Name = "btnRutaAbsoluta";
+            btnRutaAbsoluta.Size = new Size(186, 53);
+            btnRutaAbsoluta.TabIndex = 2;
+            btnRutaAbsoluta.Text = "Ver Info";
+            btnRutaAbsoluta.UseVisualStyleBackColor = true;
+            btnRutaAbsoluta.Click += btnRutaAbsoluta_Click;
             // 
             // txtRutaAbsoluta
             // 
-            this.txtRutaAbsoluta.Location = new System.Drawing.Point(60, 30);
-            this.txtRutaAbsoluta.Name = "txtRutaAbsoluta";
-            this.txtRutaAbsoluta.Size = new System.Drawing.Size(220, 23);
-            this.txtRutaAbsoluta.TabIndex = 1;
+            txtRutaAbsoluta.Location = new Point(111, 64);
+            txtRutaAbsoluta.Margin = new Padding(6);
+            txtRutaAbsoluta.Name = "txtRutaAbsoluta";
+            txtRutaAbsoluta.Size = new Size(405, 39);
+            txtRutaAbsoluta.TabIndex = 1;
+            txtRutaAbsoluta.TextChanged += txtRutaAbsoluta_TextChanged;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 33);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Ruta:";
+            label6.AutoSize = true;
+            label6.Location = new Point(37, 70);
+            label6.Margin = new Padding(6, 0, 6, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(67, 32);
+            label6.TabIndex = 0;
+            label6.Text = "Ruta:";
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(750, 500);
-            this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(100, 30);
-            this.btnLimpiar.TabIndex = 9;
-            this.btnLimpiar.Text = "Limpiar";
-            this.btnLimpiar.UseVisualStyleBackColor = true;
-            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            btnLimpiar.Location = new Point(1393, 1067);
+            btnLimpiar.Margin = new Padding(6);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(186, 64);
+            btnLimpiar.TabIndex = 9;
+            btnLimpiar.Text = "Limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
             // 
             // btnReiniciar
             // 
-            this.btnReiniciar.Location = new System.Drawing.Point(430, 510);
-            this.btnReiniciar.Name = "btnReiniciar";
-            this.btnReiniciar.Size = new System.Drawing.Size(300, 35);
-            this.btnReiniciar.TabIndex = 10;
-            this.btnReiniciar.Text = "Reiniciar Sistema";
-            this.btnReiniciar.UseVisualStyleBackColor = true;
-            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
+            btnReiniciar.Location = new Point(799, 1088);
+            btnReiniciar.Margin = new Padding(6);
+            btnReiniciar.Name = "btnReiniciar";
+            btnReiniciar.Size = new Size(557, 75);
+            btnReiniciar.TabIndex = 10;
+            btnReiniciar.Text = "Reiniciar Sistema";
+            btnReiniciar.UseVisualStyleBackColor = true;
+            btnReiniciar.Click += btnReiniciar_Click;
+            // 
+            // pictureBox
+            // 
+            pictureBox.Location = new Point(1407, 555);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(342, 464);
+            pictureBox.TabIndex = 11;
+            pictureBox.TabStop = false;
+            pictureBox.Tag = "pictureBox";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 581);
-            this.Controls.Add(this.btnReiniciar);
-            this.Controls.Add(this.btnLimpiar);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.lblEstadisticas);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtResultado);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txtEstructura);
-            this.Name = "Form1";
-            this.Text = "Sistema de Archivos";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1827, 1239);
+            Controls.Add(pictureBox);
+            Controls.Add(btnReiniciar);
+            Controls.Add(btnLimpiar);
+            Controls.Add(groupBox5);
+            Controls.Add(lblEstadisticas);
+            Controls.Add(label5);
+            Controls.Add(txtResultado);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(txtEstructura);
+            Margin = new Padding(6);
+            Name = "Form1";
+            Text = "Sistema de Archivos";
+            Load += Form1_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         private System.Windows.Forms.TextBox txtEstructura;
@@ -411,5 +461,6 @@ namespace SistemaDeArchivo_Gerarquico
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnReiniciar;
+        private PictureBox pictureBox;
     }
 }

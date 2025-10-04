@@ -1,9 +1,11 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SistemaDeArchivo_Gerarquico
 {
@@ -156,8 +158,8 @@ namespace SistemaDeArchivo_Gerarquico
             } else 
             {
                 Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
-                HashSet<String> visitado = new HashSet<String>();
-                HashSet<String> ruta = new HashSet<String>();
+                HashSet<string> visitado = new HashSet<string>();
+                HashSet<string> ruta = new HashSet<string>();
 
                 queue.Enqueue(Raiz);
                 visitado.Add(Raiz.Nombre);
@@ -174,10 +176,10 @@ namespace SistemaDeArchivo_Gerarquico
                             nodoActual = nodoActual.Padre;
                         }
                         ruta.Add(Raiz.Nombre);
-                        List<String> rutaFinal = ruta.ToList();
+                        List<string> rutaFinal = ruta.ToList();
                         rutaFinal.Reverse();
 
-                        MessageBox.Show("Se encontro el archivo que buscaba.\nSu ruta es: " + String.Join("/", rutaFinal), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Se encontro el archivo que buscaba.\nSu ruta es: " + string.Join("/", rutaFinal), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
 
@@ -194,6 +196,61 @@ namespace SistemaDeArchivo_Gerarquico
                 MessageBox.Show("No existe una ruta para el archivo que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return;
+        }
+
+        public void VerInfo(string rutaAbsoluta)
+        {
+            MessageBox.Show("La ruta absoluta que ingreso es: " + rutaAbsoluta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (Raiz == null)
+            {
+                MessageBox.Show("No existe una ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else if (rutaAbsoluta == "")
+            {
+                MessageBox.Show("Por favor ingrese la ruta absoluta que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                List<string> rutaAbsolutaList = rutaAbsoluta.Split('/').ToList();
+                string carpeta = rutaAbsolutaList[^1];
+                MessageBox.Show("La carpeta que busca es: " + carpeta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
+                HashSet<string> visitado = new HashSet<string>();
+                PictureBox pictureBox = new PictureBox();
+
+                queue.Enqueue(Raiz);
+                visitado.Add(Raiz.Nombre);
+
+                while (queue.Count > 0)
+                {
+                    NodeArchivo nodoActual = queue.Dequeue();
+
+                    if (nodoActual.Nombre == carpeta)
+                    {
+                        MessageBox.Show("Se encontro la carpeta que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (carpeta.Length == 0)
+                        {
+                            MessageBox.Show("Esta carpeta no continue archivos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        foreach (NodeArchivo archivo in nodoActual.Hijos)
+                        {
+                            MessageBox.Show("La carpeta que buscaba contiene: " + archivo.Nombre, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        return;
+                    }
+
+                    foreach (NodeArchivo hijo in nodoActual.Hijos)
+                    {
+
+                        if (!visitado.Contains(hijo.Nombre))
+                        {
+                            visitado.Add(hijo.Nombre);
+                            queue.Enqueue(hijo);
+                        }
+                    }
+                }
+            }
         }
 
         public List<string> RecorridoPreOrden()
