@@ -155,9 +155,9 @@ namespace SistemaDeArchivo_Gerarquico
                 MessageBox.Show("Por favor ingrese el termino que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else 
             {
-                //MessageBox.Show("Si existe una ruta.", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
-                HashSet<String> visitado = new HashSet<string>();
+                HashSet<String> visitado = new HashSet<String>();
+                HashSet<String> ruta = new HashSet<String>();
 
                 queue.Enqueue(Raiz);
                 visitado.Add(Raiz.Nombre);
@@ -168,11 +168,22 @@ namespace SistemaDeArchivo_Gerarquico
 
                     if (nodoActual.Nombre == nombre)
                     {
-                        MessageBox.Show("Se encontro el archivo que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        while (nodoActual.Nombre != "root")
+                        {
+                            ruta.Add(nodoActual.Nombre);
+                            nodoActual = nodoActual.Padre;
+                        }
+                        ruta.Add(Raiz.Nombre);
+                        List<String> rutaFinal = ruta.ToList();
+                        rutaFinal.Reverse();
+
+                        MessageBox.Show("Se encontro el archivo que buscaba.\nSu ruta es: " + String.Join("/", rutaFinal), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
                     }
 
                     foreach (NodeArchivo hijo in nodoActual.Hijos)
                     {
+
                         if (!visitado.Contains(hijo.Nombre))
                         {
                             visitado.Add(hijo.Nombre);
@@ -180,7 +191,7 @@ namespace SistemaDeArchivo_Gerarquico
                         }
                     }
                 }
-                //MessageBox.Show("No existe una ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No existe una ruta para el archivo que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             return;
         }
