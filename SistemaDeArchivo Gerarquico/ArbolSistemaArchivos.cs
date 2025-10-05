@@ -198,23 +198,26 @@ namespace SistemaDeArchivo_Gerarquico
             return;
         }
 
-        public void VerInfo(string rutaAbsoluta)
+        public List<string> VerInfo(string rutaAbsoluta)
         {
-            MessageBox.Show("La ruta absoluta que ingreso es: " + rutaAbsoluta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            List<string> archivosEncontrados = new List<string>();
+
+            //MessageBox.Show("La ruta absoluta que ingreso es: " + rutaAbsoluta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (Raiz == null)
             {
-                MessageBox.Show("No existe una ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                MessageBox.Show("No existe esa ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
             }
             else if (rutaAbsoluta == "")
             {
                 MessageBox.Show("Por favor ingrese la ruta absoluta que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
             }
             else
             {
                 List<string> rutaAbsolutaList = rutaAbsoluta.Split('/').ToList();
                 string carpeta = rutaAbsolutaList[^1];
-                MessageBox.Show("La carpeta que busca es: " + carpeta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("La carpeta que busca es: " + carpeta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
                 HashSet<string> visitado = new HashSet<string>();
                 PictureBox pictureBox = new PictureBox();
@@ -228,28 +231,30 @@ namespace SistemaDeArchivo_Gerarquico
 
                     if (nodoActual.Nombre == carpeta)
                     {
-                        MessageBox.Show("Se encontro la carpeta que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //MessageBox.Show("Se encontro la carpeta que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (carpeta.Length == 0)
                         {
-                            MessageBox.Show("Esta carpeta no continue archivos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Esta carpeta no contiene archivos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         foreach (NodeArchivo archivo in nodoActual.Hijos)
                         {
-                            MessageBox.Show("La carpeta que buscaba contiene: " + archivo.Nombre, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            archivosEncontrados.Add(archivo.Nombre);
+                            //MessageBox.Show("La carpeta que buscaba contiene: " + archivo.Nombre, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
-                        return;
-                    }
-
-                    foreach (NodeArchivo hijo in nodoActual.Hijos)
-                    {
-
-                        if (!visitado.Contains(hijo.Nombre))
+                        return archivosEncontrados;
+                    } else
+                        foreach (NodeArchivo hijo in nodoActual.Hijos)
                         {
-                            visitado.Add(hijo.Nombre);
-                            queue.Enqueue(hijo);
+
+                            if (!visitado.Contains(hijo.Nombre))
+                            {
+                                visitado.Add(hijo.Nombre);
+                                queue.Enqueue(hijo);
+                            }
                         }
-                    }
                 }
+                MessageBox.Show("La carpeta que busca no existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
             }
         }
 

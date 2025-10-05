@@ -46,13 +46,11 @@ namespace SistemaDeArchivo_Gerarquico
             label6 = new Label();
             btnLimpiar = new Button();
             btnReiniciar = new Button();
-            pictureBox = new PictureBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
             // txtEstructura
@@ -299,6 +297,7 @@ namespace SistemaDeArchivo_Gerarquico
             txtResultado.ScrollBars = ScrollBars.Vertical;
             txtResultado.Size = new Size(405, 507);
             txtResultado.TabIndex = 5;
+            txtResultado.Tag = "txtResultado";
             // 
             // label5
             // 
@@ -387,21 +386,11 @@ namespace SistemaDeArchivo_Gerarquico
             btnReiniciar.UseVisualStyleBackColor = true;
             btnReiniciar.Click += btnReiniciar_Click;
             // 
-            // pictureBox
-            // 
-            pictureBox.Location = new Point(1407, 555);
-            pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(342, 464);
-            pictureBox.TabIndex = 11;
-            pictureBox.TabStop = false;
-            pictureBox.Tag = "pictureBox";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1827, 1239);
-            Controls.Add(pictureBox);
             Controls.Add(btnReiniciar);
             Controls.Add(btnLimpiar);
             Controls.Add(groupBox5);
@@ -426,7 +415,6 @@ namespace SistemaDeArchivo_Gerarquico
             groupBox4.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -461,6 +449,5 @@ namespace SistemaDeArchivo_Gerarquico
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.Button btnReiniciar;
-        private PictureBox pictureBox;
     }
 }

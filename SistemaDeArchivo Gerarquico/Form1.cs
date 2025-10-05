@@ -153,7 +153,15 @@ namespace SistemaDeArchivo_Gerarquico
         private void btnRutaAbsoluta_Click(object sender, EventArgs e)
         {
             rutaAbsoluta = txtRutaAbsoluta.Text;
-            sistemaArchivos.VerInfo(rutaAbsoluta);
+            List<string> listaResultado = sistemaArchivos.VerInfo(rutaAbsoluta);
+
+            if (listaResultado.Count > 0)
+            {
+                foreach (string archivo in listaResultado)
+                {
+                    txtResultado.Text += archivo + Environment.NewLine;
+                }
+            }
         }
 
         private void btnPreOrden_Click(object sender, EventArgs e)
