@@ -201,8 +201,6 @@ namespace SistemaDeArchivo_Gerarquico
         public List<string> VerInfo(string rutaAbsoluta)
         {
             List<string> archivosEncontrados = new List<string>();
-
-            //MessageBox.Show("La ruta absoluta que ingreso es: " + rutaAbsoluta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
             if (Raiz == null)
             {
                 MessageBox.Show("No existe esa ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -217,7 +215,6 @@ namespace SistemaDeArchivo_Gerarquico
             {
                 List<string> rutaAbsolutaList = rutaAbsoluta.Split('/').ToList();
                 string carpeta = rutaAbsolutaList[^1];
-                //MessageBox.Show("La carpeta que busca es: " + carpeta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
                 HashSet<string> visitado = new HashSet<string>();
                 PictureBox pictureBox = new PictureBox();
@@ -231,7 +228,6 @@ namespace SistemaDeArchivo_Gerarquico
 
                     if (nodoActual.Nombre == carpeta)
                     {
-                        //MessageBox.Show("Se encontro la carpeta que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (carpeta.Length == 0)
                         {
                             MessageBox.Show("Esta carpeta no contiene archivos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -239,7 +235,6 @@ namespace SistemaDeArchivo_Gerarquico
                         foreach (NodeArchivo archivo in nodoActual.Hijos)
                         {
                             archivosEncontrados.Add(archivo.Nombre);
-                            //MessageBox.Show("La carpeta que buscaba contiene: " + archivo.Nombre, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         return archivosEncontrados;
                     } else
