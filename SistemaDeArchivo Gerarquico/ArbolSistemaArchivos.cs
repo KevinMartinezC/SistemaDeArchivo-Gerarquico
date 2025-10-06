@@ -142,9 +142,7 @@ namespace SistemaDeArchivo_Gerarquico
             }
         }
 
-        // ============================================================
-        // MÉTODOS VACÍOS - Necesitan implementación
-        // ============================================================
+       
 
         public void BuscarPorNombre(string nombre)
         {
@@ -257,25 +255,113 @@ namespace SistemaDeArchivo_Gerarquico
                 return archivosEncontrados;
             }
         }
-
+        /*
         public List<string> RecorridoPreOrden()
         {
-            return new List<string>();
+            var listaRutas = new List<string>();
+            void recorrerPreOrden(NodeArchivo nodoActual, string rutaActual)
+            {
+                if (nodoActual == null) return;
+                listaRutas.Add(rutaActual);
+                foreach (var hijo in nodoActual.Hijos)
+                    recorrerPreOrden(hijo, rutaActual + "/" + hijo.Nombre);
+            }
+            recorrerPreOrden(Raiz, "/root");
+            return listaRutas;
         }
+        */
+        public List<string> RecorridoPreOrden()
+        {
+            var listaRutas = new List<string>();
 
+            void ListarContenido(NodeArchivo nodoActual, string rutaActual, int nivel)
+            {
+                if (nodoActual == null) return;
+
+                if (nivel == 1 && nodoActual.Tipo==TipoNodo.Carpeta)
+                    listaRutas.Add(rutaActual);
+                
+
+                if (nodoActual.Tipo == TipoNodo.Archivo)
+                    listaRutas.Add("-" + nodoActual.Nombre);
+
+
+                foreach (var hijo in nodoActual.Hijos)
+                    ListarContenido(hijo, rutaActual + "/" + hijo.Nombre, nivel + 1);
+
+            }
+            foreach (var carpetaPrincipal in Raiz.Hijos)
+                ListarContenido(carpetaPrincipal, "/root/" + carpetaPrincipal.Nombre, 1);
+            return listaRutas;
+        }
         public List<string> RecorridoPostOrden()
         {
-            return new List<string>();
+            var listaRutas =new List<string>();
+            void ListarContenido(NodeArchivo nodoActual, string rutaActual, int nivel)
+            {
+                if (nodoActual == null) return;
+
+
+                
+                foreach (var hijo in nodoActual.Hijos)
+                    ListarContenido(hijo, rutaActual + "/" + hijo.Nombre, nivel +1);
+
+                if (nivel == 1 && nodoActual.Tipo == TipoNodo.Carpeta)
+                    listaRutas.Add(rutaActual);
+
+                if (nodoActual.Tipo == TipoNodo.Archivo)
+                    listaRutas.Add("-" + nodoActual.Nombre);
+            }
+            foreach (var carpetaPrincipal in Raiz.Hijos)
+                ListarContenido(carpetaPrincipal, "/root/" + carpetaPrincipal.Nombre, 1);
+            listaRutas.Add("");
+
+           
+
+            return listaRutas;
         }
 
         public List<string> RecorridoBFS()
         {
-            return new List<string>();
+            var listaRutas = new List<string>();
+
+            foreach (var carpetaPrincipal in Raiz.Hijos)
+            {
+                listaRutas.Add("/root/" + carpetaPrincipal.Nombre);
+
+                var colaPendientes = new Queue<NodeArchivo>();
+                colaPendientes.Enqueue(carpetaPrincipal);
+
+                while (colaPendientes.Count > 0)
+                {
+                    var nodoActual = colaPendientes.Dequeue();
+
+                    foreach (var hijo in nodoActual.Hijos)
+                        if (hijo.Tipo == TipoNodo.Carpeta)
+                            colaPendientes.Enqueue(hijo);
+
+                    foreach (var hijo in nodoActual.Hijos)
+                        if (hijo.Tipo == TipoNodo.Archivo)
+                            listaRutas.Add("-" + hijo.Nombre);
+                }
+
+                listaRutas.Add(string.Empty);
+            }
+            return listaRutas;
+            //return new List<string>();
         }
 
         public List<string> ListarTodosLosArchivos()
         {
-            return new List<string>();
+            var listaRutas = new List<string>();
+            void DFS(NodeArchivo nodoActual, string rutaActual)
+            {
+                if (nodoActual.Tipo == TipoNodo.Archivo) listaRutas.Add(rutaActual);
+                foreach (var hijo in nodoActual.Hijos)
+                    DFS(hijo, rutaActual + "/" + hijo.Nombre);
+            }
+            DFS(Raiz, "/root");
+            return listaRutas;
         }
 
         public int ObtenerProfundidadMaxima()

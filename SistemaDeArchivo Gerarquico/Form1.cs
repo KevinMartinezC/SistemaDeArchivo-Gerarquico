@@ -28,7 +28,7 @@ namespace SistemaDeArchivo_Gerarquico
             sistemaArchivos.AgregarNodo("/root", "fotos", TipoNodo.Carpeta);
             sistemaArchivos.AgregarNodo("/root/fotos", "vacaciones", TipoNodo.Carpeta);
             sistemaArchivos.AgregarNodo("/root/fotos/vacaciones", "playa.jpg", TipoNodo.Archivo);
-            sistemaArchivos.AgregarNodo("/root/fotos/vacaciones", "montaña.jpg", TipoNodo.Archivo);
+            sistemaArchivos.AgregarNodo("/root/fotos/vacaciones", "montaÃ±a.jpg", TipoNodo.Archivo);
             sistemaArchivos.AgregarNodo("/root/fotos", "perfil.jpg", TipoNodo.Archivo);
 
             sistemaArchivos.AgregarNodo("/root", "sistema", TipoNodo.Carpeta);
@@ -60,7 +60,7 @@ namespace SistemaDeArchivo_Gerarquico
 
             if (exito)
             {
-                MessageBox.Show($"Carpeta '{nombre}' creada en {rutaPadre}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Carpeta '{nombre}' creada en {rutaPadre}", "Ã‰xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNombre.Clear();
                 ActualizarVisualizacion();
             }
@@ -88,7 +88,7 @@ namespace SistemaDeArchivo_Gerarquico
 
             if (exito)
             {
-                MessageBox.Show($"Archivo '{nombre}' creado en {rutaPadre}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Archivo '{nombre}' creado en {rutaPadre}", "Ã‰xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtNombre.Clear();
                 ActualizarVisualizacion();
             }
@@ -108,7 +108,7 @@ namespace SistemaDeArchivo_Gerarquico
                 return;
             }
 
-            var confirmacion = MessageBox.Show($"¿Eliminar '{ruta}'?\nSe eliminará todo su contenido.",
+            var confirmacion = MessageBox.Show($"Â¿Eliminar '{ruta}'?\nSe eliminarÃ¡ todo su contenido.",
                 "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
@@ -117,7 +117,7 @@ namespace SistemaDeArchivo_Gerarquico
 
                 if (exito)
                 {
-                    MessageBox.Show("Elemento eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Elemento eliminado", "Ã‰xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtRutaEliminar.Clear();
                     ActualizarVisualizacion();
                 }
@@ -130,7 +130,7 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnReiniciar_Click(object sender, EventArgs e)
         {
-            var confirmacion = MessageBox.Show("¿Reiniciar el sistema?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirmacion = MessageBox.Show("Â¿Reiniciar el sistema?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
@@ -140,7 +140,7 @@ namespace SistemaDeArchivo_Gerarquico
                 txtNombre.Clear();
                 txtRutaPadre.Text = "/root";
                 txtRutaEliminar.Clear();
-                MessageBox.Show("Sistema reiniciado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Sistema reiniciado", "Ã‰xito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -166,32 +166,40 @@ namespace SistemaDeArchivo_Gerarquico
 
         private void btnPreOrden_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var resultado = sistemaArchivos.RecorridoPreOrden();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
+            //MessageBox.Show("Persona 3 implementarÃ¡ esta funciÃ³n", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnPostOrden_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var resultado = sistemaArchivos.RecorridoPostOrden();
+            txtResultado.Text= string.Join(Environment.NewLine, resultado);
+            //MessageBox.Show("Persona 3 implementarÃ¡ esta funciÃ³n", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnBFS_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var resultado = sistemaArchivos.RecorridoBFS();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
+
+            //MessageBox.Show("Persona 3 implementarÃ¡ esta funciÃ³n", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnListarArchivos_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var resultado= sistemaArchivos.ListarTodosLosArchivos();
+            txtResultado.Text = string.Join(Environment.NewLine, resultado);
+            //MessageBox.Show("Persona 3 implementarÃ¡ esta funciÃ³n", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Persona 3 implementará esta función", "En desarrollo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            txtResultado.Clear();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Evento vacío - no es necesario aquí
+            
         }
 
         private void txtRutaAbsoluta_TextChanged(object sender, EventArgs e)
