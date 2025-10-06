@@ -140,15 +140,13 @@ namespace SistemaDeArchivo_Gerarquico
             }
         }
 
-        // ============================================================
-        // MÉTODOS VACÍOS - Necesitan implementación
-        // ============================================================
+       
 
         public List<NodeArchivo> BuscarPorNombre(string nombre)
         {
             return new List<NodeArchivo>();
         }
-
+        /*
         public List<string> RecorridoPreOrden()
         {
             var listaRutas = new List<string>();
@@ -162,19 +160,54 @@ namespace SistemaDeArchivo_Gerarquico
             recorrerPreOrden(Raiz, "/root");
             return listaRutas;
         }
+        */
+        public List<string> RecorridoPreOrden()
+        {
+            var listaRutas = new List<string>();
 
+            void ListarContenido(NodeArchivo nodoActual, string rutaActual, int nivel)
+            {
+                if (nodoActual == null) return;
+
+                if (nivel == 1 && nodoActual.Tipo==TipoNodo.Carpeta)
+                    listaRutas.Add(rutaActual);
+                
+
+                if (nodoActual.Tipo == TipoNodo.Archivo)
+                    listaRutas.Add("-" + nodoActual.Nombre);
+
+
+                foreach (var hijo in nodoActual.Hijos)
+                    ListarContenido(hijo, rutaActual + "/" + hijo.Nombre, nivel + 1);
+
+            }
+            foreach (var carpetaPrincipal in Raiz.Hijos)
+                ListarContenido(carpetaPrincipal, "/root/" + carpetaPrincipal.Nombre, 1);
+            return listaRutas;
+        }
         public List<string> RecorridoPostOrden()
         {
             var listaRutas =new List<string>();
-            string RecorrerPostOrden(NodeArchivo nodoActual, string rutaActual)
+            void ListarContenido(NodeArchivo nodoActual, string rutaActual, int nivel)
             {
-                if (nodoActual==null) return string.Empty;
+                if (nodoActual == null) return;
+
+
+                
                 foreach (var hijo in nodoActual.Hijos)
-                    RecorrerPostOrden(hijo, rutaActual + "/" + hijo.Nombre);
-                listaRutas.Add(rutaActual);
-                return rutaActual;
+                    ListarContenido(hijo, rutaActual + "/" + hijo.Nombre, nivel +1);
+
+                if (nivel == 1 && nodoActual.Tipo == TipoNodo.Carpeta)
+                    listaRutas.Add(rutaActual);
+
+                if (nodoActual.Tipo == TipoNodo.Archivo)
+                    listaRutas.Add("-" + nodoActual.Nombre);
             }
-            RecorrerPostOrden(Raiz, "/root");
+            foreach (var carpetaPrincipal in Raiz.Hijos)
+                ListarContenido(carpetaPrincipal, "/root/" + carpetaPrincipal.Nombre, 1);
+            listaRutas.Add("");
+
+           
 
             return listaRutas;
         }
@@ -182,14 +215,28 @@ namespace SistemaDeArchivo_Gerarquico
         public List<string> RecorridoBFS()
         {
             var listaRutas = new List<string>();
-            var q = new Queue<(NodeArchivo nodo, string ruta)>();
-            q.Enqueue((Raiz, "/root"));
-            while (q.Count > 0)
+
+            foreach (var carpetaPrincipal in Raiz.Hijos)
             {
-                var (nodoActual, ruta) = q.Dequeue();
-                listaRutas.Add(ruta);
-                foreach (var hijo in nodoActual.Hijos)
-                    q.Enqueue((hijo, ruta + "/" + hijo.Nombre));
+                listaRutas.Add("/root/" + carpetaPrincipal.Nombre);
+
+                var colaPendientes = new Queue<NodeArchivo>();
+                colaPendientes.Enqueue(carpetaPrincipal);
+
+                while (colaPendientes.Count > 0)
+                {
+                    var nodoActual = colaPendientes.Dequeue();
+
+                    foreach (var hijo in nodoActual.Hijos)
+                        if (hijo.Tipo == TipoNodo.Carpeta)
+                            colaPendientes.Enqueue(hijo);
+
+                    foreach (var hijo in nodoActual.Hijos)
+                        if (hijo.Tipo == TipoNodo.Archivo)
+                            listaRutas.Add("-" + hijo.Nombre);
+                }
+
+                listaRutas.Add(string.Empty);
             }
             return listaRutas;
             //return new List<string>();
