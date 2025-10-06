@@ -28,7 +28,7 @@ El sistema permite:
 - Eliminación de elementos
 - Reinicio del sistema
 
-**Enlace:** [Ver Video en Google Drive] (https://drive.google.com/drive/folders/1qipTMBU5ErqMKS4Fu45sWbobaq6or4kj?usp=sharing)
+**Enlace:** [Ver Video en Google Drive](https://drive.google.com/drive/folders/1qipTMBU5ErqMKS4Fu45sWbobaq6or4kj?usp=sharing)
 
 **Contenido del video:**
 - Proceso de buscar
