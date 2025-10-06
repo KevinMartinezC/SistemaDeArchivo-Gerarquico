@@ -1,9 +1,11 @@
 ﻿
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace SistemaDeArchivo_Gerarquico
 {
@@ -142,9 +144,116 @@ namespace SistemaDeArchivo_Gerarquico
 
        
 
-        public List<NodeArchivo> BuscarPorNombre(string nombre)
+        public void BuscarPorNombre(string nombre)
         {
-            return new List<NodeArchivo>();
+            if (Raiz == null)
+            {
+                MessageBox.Show("No existe una ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            } else if (nombre == "")
+            {
+                MessageBox.Show("Por favor ingrese el termino que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } else 
+            {
+                Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
+                HashSet<string> visitado = new HashSet<string>();
+                HashSet<string> ruta = new HashSet<string>();
+
+                queue.Enqueue(Raiz);
+                visitado.Add(Raiz.Nombre);
+
+                while (queue.Count > 0)
+                {
+                    NodeArchivo nodoActual = queue.Dequeue();
+
+                    if (nodoActual.Nombre == nombre)
+                    {
+                        while (nodoActual.Nombre != "root")
+                        {
+                            ruta.Add(nodoActual.Nombre);
+                            nodoActual = nodoActual.Padre;
+                        }
+                        ruta.Add(Raiz.Nombre);
+                        List<string> rutaFinal = ruta.ToList();
+                        rutaFinal.Reverse();
+
+                        MessageBox.Show("Se encontro el archivo que buscaba.\nSu ruta es: " + string.Join("/", rutaFinal), "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+
+                    foreach (NodeArchivo hijo in nodoActual.Hijos)
+                    {
+
+                        if (!visitado.Contains(hijo.Nombre))
+                        {
+                            visitado.Add(hijo.Nombre);
+                            queue.Enqueue(hijo);
+                        }
+                    }
+                }
+                MessageBox.Show("No existe una ruta para el archivo que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return;
+        }
+
+        public List<string> VerInfo(string rutaAbsoluta)
+        {
+            List<string> archivosEncontrados = new List<string>();
+
+            //MessageBox.Show("La ruta absoluta que ingreso es: " + rutaAbsoluta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (Raiz == null)
+            {
+                MessageBox.Show("No existe esa ruta.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
+            }
+            else if (rutaAbsoluta == "")
+            {
+                MessageBox.Show("Por favor ingrese la ruta absoluta que busca.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
+            }
+            else
+            {
+                List<string> rutaAbsolutaList = rutaAbsoluta.Split('/').ToList();
+                string carpeta = rutaAbsolutaList[^1];
+                //MessageBox.Show("La carpeta que busca es: " + carpeta, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Queue<NodeArchivo> queue = new Queue<NodeArchivo>();
+                HashSet<string> visitado = new HashSet<string>();
+                PictureBox pictureBox = new PictureBox();
+
+                queue.Enqueue(Raiz);
+                visitado.Add(Raiz.Nombre);
+
+                while (queue.Count > 0)
+                {
+                    NodeArchivo nodoActual = queue.Dequeue();
+
+                    if (nodoActual.Nombre == carpeta)
+                    {
+                        //MessageBox.Show("Se encontro la carpeta que buscaba.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (carpeta.Length == 0)
+                        {
+                            MessageBox.Show("Esta carpeta no contiene archivos.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        foreach (NodeArchivo archivo in nodoActual.Hijos)
+                        {
+                            archivosEncontrados.Add(archivo.Nombre);
+                            //MessageBox.Show("La carpeta que buscaba contiene: " + archivo.Nombre, "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        return archivosEncontrados;
+                    } else
+                        foreach (NodeArchivo hijo in nodoActual.Hijos)
+                        {
+
+                            if (!visitado.Contains(hijo.Nombre))
+                            {
+                                visitado.Add(hijo.Nombre);
+                                queue.Enqueue(hijo);
+                            }
+                        }
+                }
+                MessageBox.Show("La carpeta que busca no existe.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return archivosEncontrados;
+            }
         }
         /*
         public List<string> RecorridoPreOrden()
